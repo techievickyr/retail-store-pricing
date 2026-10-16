@@ -1,0 +1,19 @@
+import type { ReactNode } from 'react';
+
+export interface PageHeadingProps {
+  eyebrow: string;
+  title: string;
+  description: string;
+  action?: ReactNode;
+}
+
+export function PageHeading({ eyebrow, title, description, action }: PageHeadingProps) {
+  return <section className="page-heading">
+    <div>
+      <div className="eyebrow"><span className="eyebrow-mark" />{eyebrow}</div>
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </div>
+    {action}
+  </section>;
+}

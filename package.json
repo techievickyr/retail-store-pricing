@@ -1,0 +1,18 @@
+{
+  "name": "retail-pricing-platform",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -k -n api,worker,web -c green,yellow,blue \"npm:dev:api\" \"npm:dev:worker\" \"npm:dev:web\"",
+    "dev:api": "npm run dev --prefix apps/pricing-service",
+    "dev:worker": "npm run dev:worker --prefix apps/pricing-service",
+    "dev:web": "npm run dev --prefix apps/web",
+    "build:api": "npm run build --prefix apps/pricing-service",
+    "build:web": "npm run build --prefix apps/web",
+    "test:api": "npm test --prefix apps/pricing-service",
+    "test:web": "npm test --prefix apps/web",
+    "lint:web": "npm run lint --prefix apps/web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

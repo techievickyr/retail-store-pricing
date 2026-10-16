@@ -1,0 +1,48 @@
+import { Router } from 'express';
+import cancelPrice from './cancel-price';
+import compensatePrice from './compensate-price';
+import configRoute from './config';
+import createImport from './create-import';
+import deletePriceHistory from './delete-price-history';
+import downloadImportReport from './download-import-report';
+import getImport from './get-import';
+import getImportRows from './get-import-rows';
+import getPrice from './get-price';
+import getPriceHistory from './get-price-history';
+import health from './health';
+import listImports from './list-imports';
+import me from './me';
+import products from './products';
+import readiness from './readiness';
+import retryImport from './retry-import';
+import searchPrices from './search-prices';
+import stores from './stores';
+import updatePrice from './update-price';
+import users from './users';
+
+const apiRoutes = Router();
+apiRoutes.use(me);
+apiRoutes.use(users);
+apiRoutes.use(configRoute);
+apiRoutes.use(stores);
+apiRoutes.use(products);
+apiRoutes.use(createImport);
+apiRoutes.use(listImports);
+apiRoutes.use(getImport);
+apiRoutes.use(getImportRows);
+apiRoutes.use(downloadImportReport);
+apiRoutes.use(retryImport);
+apiRoutes.use(searchPrices);
+apiRoutes.use(getPrice);
+apiRoutes.use(updatePrice);
+apiRoutes.use(cancelPrice);
+apiRoutes.use(getPriceHistory);
+apiRoutes.use(compensatePrice);
+apiRoutes.use(deletePriceHistory);
+
+const routes = Router();
+routes.use(health);
+routes.use(readiness);
+routes.use('/api', apiRoutes);
+
+export default routes;
